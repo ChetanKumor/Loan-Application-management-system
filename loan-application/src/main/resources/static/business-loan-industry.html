@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Industry - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .industry-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 95%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .industry-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .industry-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+        }
+        .industry-select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            cursor: pointer;
+        }
+        .industry-select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.1);
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="industry-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="industry-content">
+            <div class="container">
+                <div class="industry-header">
+                    <h3 class="loan-type-label">BUSINESS LOAN</h3>
+                    <h2 class="industry-title">What industry is your business in?</h2>
+                </div>
+                
+                <div class="industry-form">
+                    <div class="form-group">
+                        <label for="industry-select">Industry</label>
+                        <select id="industry-select" class="industry-select">
+                            <option value="" disabled selected>Select Industry</option>
+                            <option value="accommodation">Accommodation and Food Services</option>
+                            <option value="agriculture">Agriculture, Forestry, Fishing and Hunting</option>
+                            <option value="arts">Arts, Entertainment, and Recreation</option>
+                            <option value="construction">Construction</option>
+                            <option value="education">Educational Services</option>
+                            <option value="finance">Finance and Insurance</option>
+                            <option value="healthcare">Healthcare and Social Assistance</option>
+                            <option value="information">Information</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="mining">Mining, Quarrying, and Oil and Gas Extraction</option>
+                            <option value="professional">Professional, Scientific, and Technical Services</option>
+                            <option value="realestate">Real Estate and Rental and Leasing</option>
+                            <option value="retail">Retail Trade</option>
+                            <option value="transportation">Transportation and Warehousing</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="wholesale">Wholesale Trade</option>
+                            <option value="other">Other Services</option>
+                        </select>
+                    </div>
+
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const industrySelect = document.getElementById('industry-select');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Reset the industry selection on page load/reload
+            localStorage.removeItem('businessIndustry');
+            
+            // Set the default selection to the placeholder option
+            industrySelect.value = "";
+            
+            // Disable continue button initially
+            continueBtn.disabled = true;
+            
+            // Add change event listener to update localStorage when selection changes
+            industrySelect.addEventListener('change', function() {
+                const industry = this.options[this.selectedIndex].text;
+                
+                // Enable/disable continue button based on valid selection
+                if (industry && industry !== "Select") {
+                    continueBtn.disabled = false;
+                    
+                    // Update localStorage with the current industry
+                    localStorage.setItem('businessIndustry', industry);
+                } else {
+                    continueBtn.disabled = true;
+                }
+            });
+            
+            // Continue button click handler
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    const industry = industrySelect.options[industrySelect.selectedIndex].text;
+                    
+                    if (industry && industry !== "Select") {
+                        // Store the business industry in localStorage
+                        localStorage.setItem('businessIndustry', industry);
+                        
+                        // Redirect to the personal information page
+                        window.location.href = 'business-loan-personal-info.html';
+                    } else {
+                        // If no valid industry is selected, show an alert
+                        alert('Please select your business industry before continuing.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

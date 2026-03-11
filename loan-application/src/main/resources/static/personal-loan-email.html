@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Address - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .email-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .email-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.2);
+        }
+        .email-input-container {
+            position: relative;
+        }
+        .email-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            z-index: 1;
+        }
+        .error-message {
+            color: #e53935;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-message.visible {
+            display: block;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="email-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="email-content">
+            <div class="container">
+                <div class="email-header">
+                    <h3 class="loan-type-label">PERSONAL LOAN</h3>
+                    <h2 class="email-title">What's your email address?</h2>
+                </div>
+                
+                <div class="email-form">
+                    <div class="form-group">
+                        <label for="email-address" class="form-label">Email Address</label>
+                        <div class="email-input-container">
+                            <i class="fas fa-envelope email-icon"></i>
+                            <input type="email" id="email-address" class="form-control" placeholder="">
+                        </div>
+                        <div id="email-error" class="error-message">Please enter your email address.</div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailInput = document.getElementById('email-address');
+            const emailError = document.getElementById('email-error');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Validate email format
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Validate email as user types
+            emailInput.addEventListener('input', function() {
+                const email = this.value.trim();
+                
+                if (email === '') {
+                    emailError.textContent = 'Please enter your email address.';
+                    emailError.classList.add('visible');
+                    continueBtn.disabled = true;
+                } else if (!isValidEmail(email)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailError.classList.add('visible');
+                    continueBtn.disabled = true;
+                } else {
+                    emailError.classList.remove('visible');
+                    continueBtn.disabled = false;
+                }
+            });
+            
+            // Validate on blur
+            emailInput.addEventListener('blur', function() {
+                const email = this.value.trim();
+                
+                if (email === '') {
+                    emailError.textContent = 'Please enter your email address.';
+                    emailError.classList.add('visible');
+                } else if (!isValidEmail(email)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailError.classList.add('visible');
+                }
+            });
+            
+            // Continue button click handler
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    const email = emailInput.value.trim();
+                    
+                    if (isValidEmail(email)) {
+                        // Store the email in localStorage with consistent key naming
+                        localStorage.setItem('personalLoanEmail', email);
+                        
+                        // Redirect to the next page in the application flow
+                        window.location.href = 'personal-loan-confirmation.html';
+                    } else {
+                        emailError.classList.add('visible');
+                        emailInput.focus();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

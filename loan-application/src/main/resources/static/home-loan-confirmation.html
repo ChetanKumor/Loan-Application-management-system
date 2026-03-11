@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Confirmation - SVA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .confirmation-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .confirmation-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .confirmation-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a2b3c;
+            margin-bottom: 15px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .info-label {
+            flex: 0 0 40%;
+            font-weight: 500;
+            color: #555;
+        }
+        .info-value {
+            flex: 0 0 60%;
+            color: #333;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #00a651;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background-color: #008c45;
+        }
+        .thank-you-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </div>
+        <img src="img/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="confirmation-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="loan-type-label">Home Loan</div>
+        <h1 class="confirmation-title">Application Summary</h1>
+
+        <div class="confirmation-container">
+            <div class="section">
+                <h2 class="section-title">Personal Information</h2>
+                <div class="info-row">
+                    <div class="info-label">Full Name:</div>
+                    <div class="info-value" id="fullName"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Date of Birth:</div>
+                    <div class="info-value" id="dob"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Phone Number:</div>
+                    <div class="info-value" id="phone"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Email Address:</div>
+                    <div class="info-value" id="email"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Financial Information</h2>
+                <div class="info-row">
+                    <div class="info-label">Annual Income:</div>
+                    <div class="info-value" id="annualIncome"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Employment Status:</div>
+                    <div class="info-value" id="employmentStatus"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Credit Score:</div>
+                    <div class="info-value" id="creditScore"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Property Information</h2>
+                <div class="info-row">
+                    <div class="info-label">Property Type:</div>
+                    <div class="info-value" id="propertyType"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Property Status:</div>
+                    <div class="info-value" id="propertyStatus"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Property Cost:</div>
+                    <div class="info-value" id="propertyCost"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Property Location:</div>
+                    <div class="info-value" id="propertyLocation"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Loan Details</h2>
+                <div class="info-row">
+                    <div class="info-label">Loan Amount:</div>
+                    <div class="info-value" id="loanAmount"></div>
+                </div>
+            </div>
+
+            <button class="submit-button" id="submitApplication">Submit Application</button>
+            <div class="thank-you-message" id="thankYouMessage" style="display: none;">
+                Thank you for your application! We will contact you shortly.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch all data from localStorage
+            const fullName = localStorage.getItem('fullName') || 'Not provided';
+            const dob = localStorage.getItem('dateOfBirth') || 'Not provided';
+            const phone = localStorage.getItem('phoneNumber') || 'Not provided';
+            const email = localStorage.getItem('homeLoanEmail') || 'Not provided';
+            const annualIncome = localStorage.getItem('annualIncome') || 'Not provided';
+            const employmentStatus = localStorage.getItem('employmentType') || 'Not provided';
+            const creditScore = localStorage.getItem('creditScoreText') || 'Not provided';
+            const propertyType = localStorage.getItem('propertyTypeText') || 'Not provided';
+            const propertyStatus = localStorage.getItem('propertyStatusText') || 'Not provided';
+            const propertyCost = localStorage.getItem('propertyCost') || 'Not provided';
+            const propertyLocation = localStorage.getItem('propertyLocationText') || 'Not provided';
+            const loanAmount = localStorage.getItem('loanAmount') || 'Not provided';
+
+            // Display the data in the respective elements
+            document.getElementById('fullName').textContent = fullName;
+            document.getElementById('dob').textContent = dob;
+            document.getElementById('phone').textContent = phone;
+            document.getElementById('email').textContent = email;
+            document.getElementById('annualIncome').textContent = formatCurrency(annualIncome);
+            document.getElementById('employmentStatus').textContent = employmentStatus;
+            document.getElementById('creditScore').textContent = creditScore;
+            document.getElementById('propertyType').textContent = propertyType;
+            document.getElementById('propertyStatus').textContent = propertyStatus;
+            document.getElementById('propertyCost').textContent = formatCurrency(propertyCost);
+            document.getElementById('propertyLocation').textContent = propertyLocation;
+            document.getElementById('loanAmount').textContent = formatCurrency(loanAmount);
+
+            // Format currency values
+            function formatCurrency(value) {
+                if (value === 'Not provided' || !value) return 'Not provided';
+                
+                // Remove any non-numeric characters except decimal point
+                const numericValue = value.toString().replace(/[^0-9.]/g, '');
+                
+                // Format as currency with rupee symbol
+                return '₹' + parseFloat(numericValue).toLocaleString('en-IN', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            // Handle submit button click
+            document.getElementById('submitApplication').addEventListener('click', function() {
+                // Hide the submit button
+                this.style.display = 'none';
+                
+                // Show thank you message
+                document.getElementById('thankYouMessage').style.display = 'block';
+                
+                // Prepare the data to be sent to the server
+                const applicationData = {
+                    fullName: fullName,
+                    dateOfBirth: dob,
+                    phoneNumber: phone,
+                    email: email,
+                    annualIncome: annualIncome,
+                    employmentType: employmentStatus,
+                    creditScore: creditScore,
+                    propertyType: propertyType,
+                    propertyStatus: propertyStatus,
+                    propertyCost: propertyCost,
+                    propertyLocation: propertyLocation,
+                    loanAmount: loanAmount,
+                    applicationType: 'Home Loan'
+                };
+                
+                // Send the data to the server using fetch API
+                fetch('/api/home-loan-applications', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(applicationData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Application submitted successfully:', data);
+                    
+                    // Clear localStorage after successful submission
+                    localStorage.clear();
+                    
+                    // Redirect to thank you page
+                    window.location.href = 'home-loan-thankyou.html';
+                })
+                .catch(error => {
+                    console.error('Error submitting application:', error);
+                    alert('There was an error submitting your application. Please try again.');
+                    
+                    // Show the submit button again in case of error
+                    document.getElementById('submitApplication').style.display = 'block';
+                    document.getElementById('thankYouMessage').style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

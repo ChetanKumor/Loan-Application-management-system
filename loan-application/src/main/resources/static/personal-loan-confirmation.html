@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Confirmation - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .confirmation-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background-color: #0066cc;
+        }
+        .confirmation-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .confirmation-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .loan-type-label {
+            color: #0066cc;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .confirmation-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a2b3c;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .confirmation-message {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .application-details {
+            margin-bottom: 30px;
+        }
+        .detail-group {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .detail-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .detail-value {
+            font-size: 16px;
+            color: #1a2b3c;
+            font-weight: 500;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #0066cc;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .status-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="confirmation-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="confirmation-content">
+            <div class="confirmation-header">
+                <h3 class="loan-type-label">PERSONAL LOAN</h3>
+                <h2 class="confirmation-title">Application Summary</h2>
+                <p class="confirmation-message">Please review your application details below before final submission.</p>
+            </div>
+            
+            <div class="application-details" id="application-details">
+                <!-- Application details will be populated here -->
+            </div>
+            
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+                <p>Submitting your application...</p>
+            </div>
+            
+            <div class="status-message" id="status-message"></div>
+            
+            <button class="btn-primary" id="submit-application">Submit Application</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener to the submit button
+            const submitButton = document.getElementById('submit-application');
+            if (submitButton) {
+                submitButton.addEventListener('click', function() {
+                    if (validateLoanData()) {
+                        submitLoanApplication();
+                    }
+                });
+            }
+            
+            // Populate application details section
+            populateApplicationDetails();
+            
+            // Function to submit loan application data to backend
+            function submitLoanApplication() {
+                document.getElementById('loading-spinner').style.display = 'block';
+                document.getElementById('status-message').textContent = '';
+                document.getElementById('status-message').style.display = 'none';
+                
+                // Debug: Log all storage items
+                console.log('All localStorage items:');
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    console.log(`localStorage - Key: ${key}, Value: ${localStorage.getItem(key)}`);
+                }
+                
+                // Try to get values from localStorage
+                const getStoredValue = (key) => {
+                    return localStorage.getItem(key) || '';
+                };
+                
+                // Combine street address and city for full address
+                const streetAddress = getStoredValue('personalLoanStreetAddress');
+                const city = getStoredValue('personalLoanCity');
+                const fullAddress = streetAddress + (city ? `, ${city}` : '');
+                
+                // Parse numeric values
+                const parseNumericValue = (value) => {
+                    // Remove any non-numeric characters (like $ or commas)
+                    const cleanValue = value.replace(/[^0-9.]/g, '');
+                    return cleanValue ? parseFloat(cleanValue) : 0;
+                };
+                
+                // Format the data according to the backend model requirements
+                const formattedData = {
+                    purpose: getStoredValue('personalLoanPurpose'),
+                    amount: parseNumericValue(getStoredValue('personalLoanAmount')),
+                    dob: getStoredValue('personalLoanDob'),
+                    housingStatus: getStoredValue('personalLoanHousing'),
+                    creditScore: getStoredValue('personalLoanCredit'),
+                    employmentStatus: getStoredValue('personalLoanEmployment'),
+                    income: parseNumericValue(getStoredValue('personalLoanIncome')),
+                    pincode: getStoredValue('personalLoanPincode'),
+                    address: fullAddress,
+                    fullName: `${getStoredValue('personalLoanFirstName')} ${getStoredValue('personalLoanLastName')}`,
+                    phone: getStoredValue('personalLoanPhone'),
+                    email: getStoredValue('personalLoanEmail')
+                };
+                
+                console.log('Formatted data for API:', formattedData);
+                console.log('JSON string being sent:', JSON.stringify(formattedData));
+                
+                // Send the data to the API
+                fetch('http://localhost:8080/api/personal-loan/apply', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formattedData)
+                })
+                .then(response => {
+                    console.log('API Response status:', response.status);
+                    console.log('API Response headers:', [...response.headers].map(h => `${h[0]}: ${h[1]}`).join(', '));
+                    
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            console.error('Error response body:', text);
+                            try {
+                                // Try to parse the error as JSON
+                                const errorJson = JSON.parse(text);
+                                if (errorJson.message) {
+                                    throw new Error(`Server error: ${errorJson.message}`);
+                                } else {
+                                    throw new Error(`Server error (${response.status}): ${text}`);
+                                }
+                            } catch (e) {
+                                // If parsing fails, use the raw text
+                                throw new Error(`Server error (${response.status}): ${text}`);
+                            }
+                        });
+                    }
+                    
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    
+                    // Display success message and redirect to thank you page
+                    document.getElementById('status-message').textContent = 'Application submitted successfully!';
+                    document.getElementById('status-message').className = 'status-message success';
+                    document.getElementById('status-message').style.display = 'block';
+                    
+                    // Clear localStorage
+                    for (const key in localStorage) {
+                        if (key.startsWith('personalLoan')) {
+                            localStorage.removeItem(key);
+                        }
+                    }
+                    
+                    // Redirect to thank you page after a short delay
+                    setTimeout(() => {
+                        window.location.href = 'thank-you.html?id=' + (data.id || '');
+                    }, 1500);
+                })
+                .catch(error => {
+                    document.getElementById('loading-spinner').style.display = 'none';
+                    
+                    // Display error message
+                    document.getElementById('status-message').textContent = error.message;
+                    document.getElementById('status-message').className = 'status-message error';
+                    document.getElementById('status-message').style.display = 'block';
+                    
+                    console.error('Error:', error);
+                });
+            }
+            
+            // Function to populate application details section
+            function populateApplicationDetails() {
+                const detailsContainer = document.getElementById('application-details');
+                if (!detailsContainer) return;
+                
+                // Get values from localStorage
+                const purpose = localStorage.getItem('personalLoanPurpose') || 'Not specified';
+                const amount = localStorage.getItem('personalLoanAmount') || 'Not specified';
+                const firstName = localStorage.getItem('personalLoanFirstName') || '';
+                const lastName = localStorage.getItem('personalLoanLastName') || '';
+                const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'Not specified';
+                const email = localStorage.getItem('personalLoanEmail') || 'Not specified';
+                const phone = localStorage.getItem('personalLoanPhone') || 'Not specified';
+                const address = localStorage.getItem('personalLoanStreetAddress') || '';
+                const city = localStorage.getItem('personalLoanCity') || '';
+                const fullAddress = address + (city ? `, ${city}` : '');
+                const pincode = localStorage.getItem('personalLoanPincode') || 'Not specified';
+                const dob = localStorage.getItem('personalLoanDob') || 'Not specified';
+                const housing = localStorage.getItem('personalLoanHousing') || 'Not specified';
+                const employment = localStorage.getItem('personalLoanEmployment') || 'Not specified';
+                const income = localStorage.getItem('personalLoanIncome') || 'Not specified';
+                const credit = localStorage.getItem('personalLoanCredit') || 'Not specified';
+                
+                // Create HTML for application details
+                detailsContainer.innerHTML = `
+                    <div class="detail-group">
+                        <div class="detail-label">Loan Purpose</div>
+                        <div class="detail-value">${purpose}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Loan Amount</div>
+                        <div class="detail-value">$${amount}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Full Name</div>
+                        <div class="detail-value">${fullName}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Email</div>
+                        <div class="detail-value">${email}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Phone</div>
+                        <div class="detail-value">${phone}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Address</div>
+                        <div class="detail-value">${fullAddress}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Pincode</div>
+                        <div class="detail-value">${pincode}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Date of Birth</div>
+                        <div class="detail-value">${dob}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Housing Status</div>
+                        <div class="detail-value">${housing}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Employment Status</div>
+                        <div class="detail-value">${employment}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Annual Income</div>
+                        <div class="detail-value">$${income}</div>
+                    </div>
+                    <div class="detail-group">
+                        <div class="detail-label">Credit Score</div>
+                        <div class="detail-value">${credit}</div>
+                    </div>
+                `;
+            }
+            
+            // Function to validate loan data before submission
+            function validateLoanData() {
+                const requiredFields = [
+                    { key: 'personalLoanPurpose', label: 'Loan Purpose' },
+                    { key: 'personalLoanAmount', label: 'Loan Amount' },
+                    { key: 'personalLoanDob', label: 'Date of Birth' },
+                    { key: 'personalLoanHousing', label: 'Housing Status' },
+                    { key: 'personalLoanCredit', label: 'Credit Score' },
+                    { key: 'personalLoanEmployment', label: 'Employment Status' },
+                    { key: 'personalLoanIncome', label: 'Income' },
+                    { key: 'personalLoanPincode', label: 'PIN Code' },
+                    { key: 'personalLoanStreetAddress', label: 'Address' },
+                    { key: 'personalLoanFirstName', label: 'First Name' },
+                    { key: 'personalLoanLastName', label: 'Last Name' },
+                    { key: 'personalLoanPhone', label: 'Phone Number' },
+                    { key: 'personalLoanEmail', label: 'Email' }
+                ];
+                
+                const missingFields = [];
+                
+                for (const field of requiredFields) {
+                    const value = localStorage.getItem(field.key);
+                    if (!value || value.trim() === '') {
+                        missingFields.push(field.label);
+                    }
+                }
+                
+                if (missingFields.length > 0) {
+                    const statusMessage = document.getElementById('status-message');
+                    statusMessage.textContent = 'Please complete the following required fields: ' + missingFields.join(', ');
+                    statusMessage.className = 'status-message error';
+                    statusMessage.style.display = 'block';
+                    return false;
+                }
+                
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>

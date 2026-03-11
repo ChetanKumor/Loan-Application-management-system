@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator - SVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="homepage.html">
+                        <img src="images/logo.png" alt="SVA Logo">
+                        <span class="company-name">SVA Financial Services</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="homepage.html" class="nav-item">Home</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Loans <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="personal-loan.html">Personal Loans</a>
+                            <a href="home-loan.html">Home Loans</a>
+                            <a href="education-loan.html">Education Loans</a>
+                            <a href="mortgage-loan.html">Mortgage Loans</a>
+                            <a href="vehicle-loan.html">Vehicle Loans</a>
+                            <a href="business-loan.html">Business Loans</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Insurances <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="health-insurance.html">Health Insurance</a>
+                            <a href="life-insurance.html">Life Insurance</a>
+                            <a href="vehicle-insurance.html">Vehicle Insurance</a>
+                        </div>
+                    </div>
+                    <a href="loan-calculator.html" class="nav-item active">Loan Calculator</a>
+                    <a href="about.html" class="nav-item">About Us</a>
+                    <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Calculator Hero Section -->
+    <section class="calculator-hero">
+        <div class="container">
+            <h1>Loan Calculator</h1>
+            <p>Plan your finances with our easy-to-use loan calculator</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-tabs">
+                    <button class="tab-btn active" data-tab="personal">Personal Loan</button>
+                    <button class="tab-btn" data-tab="home">Home Loan</button>
+                    <button class="tab-btn" data-tab="auto">Auto Loan</button>
+                    <button class="tab-btn" data-tab="education">Education Loan</button>
+                </div>
+                
+                <div class="calculator-content">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="loan-amount">Loan Amount (₹)</label>
+                            <input type="number" id="loan-amount" value="500000" min="50000" max="50000000">
+                            <input type="range" id="loan-amount-slider" min="50000" max="5000000" value="500000" step="50000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest-rate">Interest Rate (%)</label>
+                            <input type="number" id="interest-rate" value="8" min="1" max="30" step="0.1">
+                            <input type="range" id="interest-rate-slider" min="1" max="30" value="8" step="0.1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loan-term">Loan Term (years)</label>
+                            <input type="number" id="loan-term" value="5" min="1" max="30">
+                            <input type="range" id="loan-term-slider" min="1" max="30" value="5" step="1">
+                        </div>
+                        
+                        <button id="calculate-btn" class="btn btn-primary">Calculate</button>
+                    </div>
+                    
+                    <!-- Calculator Results Section -->
+                    <div class="calculator-results">
+                        <div class="result-card">
+                            <h3>Monthly Payment</h3>
+                            <p class="result-value" id="monthly-payment">₹10,135.68</p>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h3>Total Payment</h3>
+                            <p class="result-value" id="total-payment">₹6,08,140.80</p>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h3>Total Interest</h3>
+                            <p class="result-value" id="total-interest">₹1,08,140.80</p>
+                        </div>
+                        
+                        <div class="amortization-toggle">
+                            <button id="show-amortization" class="btn btn-outline">
+                                <span>Show Amortization Schedule</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="amortization-schedule" id="amortization-table" style="display: none;">
+                    <h3>Amortization Schedule</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Payment #</th>
+                                    <th>Payment Amount</th>
+                                    <th>Principal</th>
+                                    <th>Interest</th>
+                                    <th>Remaining Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="amortization-body">
+                                <!-- JavaScript will populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calculator-info">
+                <h2>Understanding Your Loan Calculation</h2>
+                <p>Our loan calculator helps you estimate your monthly payments and the total cost of your loan. Here's what each term means:</p>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Monthly Payment</h3>
+                        <p>The amount you'll pay each month, including principal and interest.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Total Payment</h3>
+                        <p>The total amount you'll pay over the life of the loan, including principal and interest.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3>Total Interest</h3>
+                        <p>The total amount of interest you'll pay over the life of the loan.</p>
+                    </div>
+                </div>
+                
+                <div class="calculator-cta">
+                    <h3>Ready to find the best loan rates?</h3>
+                    <p>Compare personalized loan offers from multiple lenders.</p>
+                    <a href="#" class="btn btn-primary">Compare Loan Rates</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="SVA Logo">
+                    <p>When banks compete, you win.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Products</h3>
+                        <ul>
+                            <li><a href="personal-loan.html">Personal Loans</a></li>
+                            <li><a href="home-loan.html">Home Loans</a></li>
+                            <li><a href="business-loan.html">Business Loans</a></li>
+                            <li><a href="education-loan.html">Education Loans</a></li>
+                            <li><a href="vehicle-loan.html">Vehicle Loans</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 SVA Financial Services. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>

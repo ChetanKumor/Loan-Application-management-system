@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Phone Number - SVA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .phone-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 95%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .phone-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .phone-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.2);
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .consent-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="phone-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="phone-content">
+            <div class="container">
+                <div class="phone-header">
+                    <h3 class="loan-type-label">HOME LOAN</h3>
+                    <h2 class="phone-title">What's your phone number?</h2>
+                </div>
+                
+                <div class="phone-form">
+                    <div class="form-group">
+                        <label for="phone-number" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone-number" class="form-control" placeholder="Enter your phone number">
+                    </div>
+                    
+                   
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInput = document.getElementById('phone-number');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Clear phone number from localStorage on page load/reload
+            localStorage.removeItem('phoneNumber');
+            
+            // Phone number validation and formatting
+            phoneInput.addEventListener('input', function(e) {
+                // Remove non-numeric characters
+                let value = this.value.replace(/\D/g, '');
+                
+                // Limit to 10 digits
+                if (value.length > 10) {
+                    value = value.substring(0, 10);
+                }
+                
+                // Format as Indian phone number
+                if (value.length > 0) {
+                    if (value.length <= 5) {
+                        this.value = value;
+                    } else {
+                        this.value = value.substring(0, 5) + ' ' + value.substring(5);
+                    }
+                } else {
+                    this.value = '';
+                }
+                
+                // Enable/disable continue button based on valid input
+                continueBtn.disabled = value.length !== 10;
+            });
+            
+            // Continue button click handler
+            continueBtn.addEventListener('click', function() {
+                const phoneValue = phoneInput.value.replace(/\D/g, '');
+                
+                // Validate Indian phone number (10 digits, starting with 6, 7, 8, or 9)
+                const isValidIndianNumber = /^[6-9]\d{9}$/.test(phoneValue);
+                
+                if (isValidIndianNumber) {
+                    // Store the phone number in localStorage
+                    localStorage.setItem('phoneNumber', phoneValue);
+                    
+                    // Redirect to the next page in the home loan application flow
+                    window.location.href = 'home-loan-email.html';
+                } else {
+                    // Show appropriate error message
+                    if (phoneValue.length !== 10) {
+                        alert('Please enter a 10-digit phone number.');
+                    } else {
+                        alert('Please enter a valid Indian mobile number starting with 6, 7, 8, or 9.');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

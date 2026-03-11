@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date of Birth - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .dob-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 75%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .dob-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .dob-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 18px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .form-hint {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="dob-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="dob-content">
+            <div class="container">
+                <div class="dob-header">
+                    <h3 class="loan-type-label">PERSONAL LOAN</h3>
+                    <h2 class="dob-title">What's your date of birth?</h2>
+                </div>
+                
+                <div class="dob-form">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="text" id="dob" class="form-control" placeholder="MM/DD/YYYY">
+                        <span class="form-hint">MM/DD/YYYY</span>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dobInput = document.getElementById('dob');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Format date input as MM/DD/YYYY
+            dobInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                let formattedValue = '';
+                
+                if (value.length > 0) {
+                    // Format month
+                    formattedValue = value.substring(0, Math.min(2, value.length));
+                    
+                    if (value.length > 2) {
+                        // Add slash and format day
+                        formattedValue += '/' + value.substring(2, Math.min(4, value.length));
+                        
+                        if (value.length > 4) {
+                            // Add slash and format year
+                            formattedValue += '/' + value.substring(4, Math.min(8, value.length));
+                        }
+                    }
+                }
+                
+                e.target.value = formattedValue;
+            });
+            
+            // Validate date of birth
+            function isValidDate(dateString) {
+                // Check format MM/DD/YYYY
+                if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+                    return false;
+                }
+                
+                const parts = dateString.split('/');
+                const month = parseInt(parts[0], 10);
+                const day = parseInt(parts[1], 10);
+                const year = parseInt(parts[2], 10);
+                
+                // Check month range
+                if (month < 1 || month > 12) {
+                    return false;
+                }
+                
+                // Check day range based on month
+                const daysInMonth = new Date(year, month, 0).getDate();
+                if (day < 1 || day > daysInMonth) {
+                    return false;
+                }
+                
+                // Check if date is in the past and person is at least 18 years old
+                const today = new Date();
+                const birthDate = new Date(year, month - 1, day);
+                const age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    return age - 1 >= 18;
+                }
+                
+                return age >= 18;
+            }
+            
+            // Continue button click handler
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    const dob = dobInput.value;
+                    
+                    if (isValidDate(dob)) {
+                        // Store the date of birth in localStorage with consistent key naming
+                        localStorage.setItem('personalLoanDob', dob);
+                        
+                        // Redirect to the housing status page
+                        window.location.href = 'personal-loan-housing.html';
+                    } else {
+                        alert('Please enter a valid date of birth. You must be at least 18 years old.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

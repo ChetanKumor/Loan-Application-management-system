@@ -1,0 +1,173 @@
+/* Loan Comparison Modal Styles */
+.loan-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loan-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.loan-modal-header {
+    padding: 20px 20px 0;
+    position: relative;
+}
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 25%;
+    background-color: #0078d4;
+    border-radius: 4px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.loan-modal-body {
+    padding: 20px 30px 30px;
+}
+
+.loan-modal-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.loan-modal-title h3 {
+    color: #0078d4;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.loan-modal-title h2 {
+    font-size: 24px;
+    color: #212529;
+    margin: 0;
+}
+
+.loan-form-group {
+    margin-bottom: 25px;
+}
+
+.loan-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.select-wrapper {
+    position: relative;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 16px;
+    color: #495057;
+    cursor: pointer;
+}
+
+.select-wrapper select:focus {
+    outline: none;
+}
+
+.select-wrapper i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.security-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.security-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.security-item:last-child {
+    margin-bottom: 0;
+}
+
+.security-item i {
+    color: #0078d4;
+    margin-right: 10px;
+}
+
+.loan-modal-actions {
+    text-align: center;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media (max-width: 576px) {
+    .loan-modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .loan-modal-body {
+        padding: 15px 20px 25px;
+    }
+}

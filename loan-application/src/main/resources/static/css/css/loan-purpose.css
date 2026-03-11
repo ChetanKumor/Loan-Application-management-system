@@ -1,0 +1,209 @@
+/* Loan Purpose Page Styles */
+.loan-purpose-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.loan-header {
+    background-color: #0f1c2a;
+    padding: 15px 0;
+}
+
+.loan-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.loan-header .logo img {
+    height: 40px;
+}
+
+.disclosure-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.progress-bar-container {
+    height: 4px;
+    background-color: #e9ecef;
+    width: 100%;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 25%;
+    background-color: #0078d4;
+}
+
+.loan-purpose-content {
+    flex: 1;
+    padding: 50px 0;
+}
+
+.loan-purpose-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.loan-type-label {
+    color: #0078d4;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.loan-purpose-title {
+    font-size: 28px;
+    color: #212529;
+    margin: 0;
+}
+
+.loan-purpose-form {
+    max-width: 550px;
+    margin: 0 auto 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.select-container {
+    position: relative;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.select-container.error {
+    border-color: #dc3545;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.select-container select {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 16px;
+    color: #495057;
+    cursor: pointer;
+}
+
+.select-container select:focus {
+    outline: none;
+}
+
+.select-container i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.security-info {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.security-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.security-item:last-child {
+    margin-bottom: 0;
+}
+
+.security-item i {
+    color: #0078d4;
+    margin-right: 10px;
+}
+
+#continue-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #0078d4;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#continue-btn:hover {
+    background-color: #0056b3;
+}
+
+.trustpilot-section {
+    max-width: 550px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.trustpilot-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.trustpilot-header .stars {
+    color: #00b67a;
+}
+
+.trustpilot-logo {
+    font-weight: bold;
+    color: #212529;
+}
+
+.trustpilot-logo i {
+    color: #00b67a;
+}
+
+@media (max-width: 768px) {
+    .loan-purpose-content {
+        padding: 30px 15px;
+    }
+    
+    .loan-purpose-title {
+        font-size: 24px;
+    }
+    
+    .trustpilot-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

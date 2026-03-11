@@ -1,0 +1,9 @@
+/* Import all CSS files */
+@import 'base.css';
+@import 'header.css';
+@import 'hero.css';
+@import 'products.css';
+@import 'testimonials.css';
+@import 'footer.css';
+@import 'loan-modal.css';
+@import 'loan-purpose.css';

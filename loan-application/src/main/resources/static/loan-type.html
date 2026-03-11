@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Loan Purpose - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="loan-purpose-page">
+        <header class="loan-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" id="back-to-home">
+                        <img src="images/logo.png" alt="SVA Logo">
+                    </a>
+                </div>
+                <div class="header-links">
+                    <a href="#" class="disclosure-link">Disclosures</a>
+                </div>
+            </div>
+        </header>
+        
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="loan-purpose-content">
+            <div class="container">
+                <div class="loan-purpose-header">
+                    <h3 class="loan-type-label">LOAN</h3>
+                    <h2 class="loan-purpose-title">Select a loan type</h2>
+                </div>
+                
+                <div class="loan-purpose-form">
+                    <div class="form-group">
+                        <label for="loan-purpose-select">Select a Loan Type</label>
+                        <div class="select-container">
+                            <select id="loan-purpose-select">
+                                <option value="" disabled selected>Choose a loan type</option>
+                                <option value="personal">Personal Loan</option>
+                                <option value="home">Home Loan</option>
+                                <option value="education">Education Loan</option>
+                                <option value="mortgage">Mortgage Loan</option>
+                                <option value="vehicle">Vehicle Loan</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                </div>
+                
+                <div class="trustpilot-section">
+                    <div class="trustpilot-header">
+                        <span>Excellent</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span>Based on 14,584 reviews</span>
+                    </div>
+                    <div class="trustpilot-logo">
+                        <i class="fas fa-star"></i> Trustpilot
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- At the bottom of your loan-type.html file, make sure you have this script tag -->
+    <script src="js/loan-type.js"></script>
+</body>
+</html>

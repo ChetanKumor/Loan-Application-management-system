@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Loan Purpose - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 25px;
+        }
+        .header-right a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .loan-purpose-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 25%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .loan-purpose-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .loan-purpose-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 18px;
+        }
+        .select-container {
+            position: relative;
+        }
+        .select-container select {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            appearance: none;
+            font-size: 16px;
+            background-color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .select-container i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="loan-purpose-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="loan-purpose-content">
+            <div class="container">
+                <div class="loan-purpose-header">
+                    <h3 class="loan-type-label">BUSINESS LOAN</h3>
+                    <h2 class="loan-purpose-title">Which type of business do you own?</h2>
+                </div>
+                
+                <div class="loan-purpose-form">
+                    <div class="form-group">
+                        <label for="loan-purpose">Select a Type of Business</label>
+                        <div class="select-container">
+                            <select id="loan-purpose">
+                                <option value="" disabled selected>Select a Type of Business</option>
+                                <option value="startup">Sole Proprietor</option>
+                                <option value="expansion">Partnership</option>
+                                <option value="equipment">Private Limited Company(PLC)</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const continueBtn = document.getElementById('continue-btn');
+            const businessTypeSelect = document.getElementById('loan-purpose');
+            
+            // Set progress bar width
+            document.querySelector('.progress-bar').style.width = '25%';
+            
+            // Add event listener to the continue button
+            continueBtn.addEventListener('click', function() {
+                const selectedType = businessTypeSelect.value;
+                
+                if (selectedType && selectedType !== "") {
+                    // Store the selected business type in localStorage
+                    localStorage.setItem('businessType', selectedType);
+                    
+                    // Navigate to the next page
+                    window.location.href = 'business-loan-purpose.html';
+                } else {
+                    alert('Please select a business type to continue.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

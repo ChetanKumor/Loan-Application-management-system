@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Amount - SVA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .loan-amount-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .loan-amount-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .loan-amount-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+        }
+        .input-group {
+            position: relative;
+        }
+        .input-group-prepend {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px 15px 15px 40px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.2);
+        }
+        .range-container {
+            margin-top: 20px;
+        }
+        .range-slider {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .range-limits {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="loan-amount-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="loan-amount-content">
+            <div class="container">
+                <div class="loan-amount-header">
+                    <h3 class="loan-type-label">HOME LOAN</h3>
+                    <h2 class="loan-amount-title">How much loan do you need?</h2>
+                </div>
+                
+                <div class="loan-amount-form">
+                    <div class="form-group">
+                        <label for="loan-amount" class="form-label">Loan Amount</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">₹</div>
+                            <input type="text" id="loan-amount" class="form-control" placeholder="Enter amount">
+                        </div>
+                        
+                        <div class="range-container">
+                            <input type="range" id="loan-range" class="range-slider" min="10000" max="10000000" step="10000">
+                            <div class="range-limits">
+                                <span id="min-amount">₹10,000</span>
+                                <span id="max-amount">₹1,00,00,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary" disabled>Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loanAmountInput = document.getElementById('loan-amount');
+            const loanRangeSlider = document.getElementById('loan-range');
+            const minAmountSpan = document.getElementById('min-amount');
+            const maxAmountSpan = document.getElementById('max-amount');
+            const continueBtn = document.getElementById('continue-btn');
+            let loanAmountValue = ''; // Variable to store the loan amount
+            
+            // Clear loan amount from localStorage on page load/reload
+            localStorage.removeItem('loanAmount');
+            
+            // Get property cost from localStorage
+            const propertyCost = localStorage.getItem('propertyCost');
+            const minLoanAmount = 10000;
+            let maxLoanAmount = propertyCost ? parseInt(propertyCost) : 10000000;
+            
+            // Ensure max loan amount is at least the minimum
+            if (maxLoanAmount < minLoanAmount) {
+                maxLoanAmount = minLoanAmount;
+            }
+            
+            // Update range slider max value and display
+            loanRangeSlider.max = maxLoanAmount;
+            loanRangeSlider.value = Math.floor(maxLoanAmount / 2); // Set initial value to half of max
+            
+            // Format and display min and max amounts
+            minAmountSpan.textContent = '₹' + parseInt(minLoanAmount).toLocaleString('en-IN');
+            maxAmountSpan.textContent = '₹' + parseInt(maxLoanAmount).toLocaleString('en-IN');
+            
+            // Format initial input value based on slider
+            loanAmountInput.value = parseInt(loanRangeSlider.value).toLocaleString('en-IN');
+            loanAmountValue = loanRangeSlider.value;
+            
+            // Enable continue button since we have an initial value
+            continueBtn.disabled = false;
+            
+            // Update input when slider changes
+            loanRangeSlider.addEventListener('input', function() {
+                const value = this.value;
+                loanAmountInput.value = parseInt(value).toLocaleString('en-IN');
+                loanAmountValue = value;
+                continueBtn.disabled = false;
+            });
+            
+            // Format and validate the loan amount input
+            loanAmountInput.addEventListener('input', function(e) {
+                // Remove non-numeric characters
+                let value = this.value.replace(/[^\d]/g, '');
+                
+                // Format with commas for thousands
+                if (value.length > 0) {
+                    this.value = parseInt(value).toLocaleString('en-IN');
+                } else {
+                    this.value = '';
+                }
+                
+                // Store the raw numeric value in the variable
+                loanAmountValue = value;
+                
+                // Enable/disable continue button based on input
+                const numValue = parseInt(value || '0');
+                continueBtn.disabled = !(numValue >= minLoanAmount && numValue <= maxLoanAmount);
+                
+                // Update slider position if value is within range
+                if (numValue >= minLoanAmount && numValue <= maxLoanAmount) {
+                    loanRangeSlider.value = numValue;
+                }
+            });
+            
+            // Validate amount when input loses focus
+            loanAmountInput.addEventListener('blur', function() {
+                const numValue = parseInt(this.value.replace(/[^\d]/g, '') || '0');
+                
+                // Check if value is within range
+                if (numValue < minLoanAmount) {
+                    alert('Loan amount cannot be less than ₹' + minLoanAmount.toLocaleString('en-IN'));
+                    this.value = minLoanAmount.toLocaleString('en-IN');
+                    loanAmountValue = minLoanAmount.toString();
+                    loanRangeSlider.value = minLoanAmount;
+                } else if (numValue > maxLoanAmount) {
+                    alert('Loan amount cannot exceed ₹' + maxLoanAmount.toLocaleString('en-IN'));
+                    this.value = maxLoanAmount.toLocaleString('en-IN');
+                    loanAmountValue = maxLoanAmount.toString();
+                    loanRangeSlider.value = maxLoanAmount;
+                }
+                
+                // Ensure continue button is properly enabled/disabled
+                continueBtn.disabled = !(parseInt(loanAmountValue) >= minLoanAmount && 
+                                        parseInt(loanAmountValue) <= maxLoanAmount);
+            });
+            
+            // Continue button click handler
+            continueBtn.addEventListener('click', function() {
+                const numValue = parseInt(loanAmountValue);
+                
+                if (loanAmountValue && numValue >= minLoanAmount && numValue <= maxLoanAmount) {
+                    // Store the loan amount in localStorage
+                    localStorage.setItem('loanAmount', loanAmountValue);
+                    
+                    // Redirect to the next page in the home loan application flow
+                    window.location.href = 'home-loan-dob.html';
+                } else {
+                    // If no valid amount is entered, show an alert
+                    alert('Please enter a loan amount between ₹' + minLoanAmount.toLocaleString('en-IN') + 
+                          ' and ₹' + maxLoanAmount.toLocaleString('en-IN'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

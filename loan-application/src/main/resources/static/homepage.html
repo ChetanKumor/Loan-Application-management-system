@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- In the head section of your HTML file -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVA - When Banks Compete, You Win</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Other head elements -->
+    <link rel="stylesheet" href="css/css/main.css">
+    <!-- Other stylesheets and scripts -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="homepage.html">
+                        <img src="images/logo.png" alt="SVA Logo">
+                        <span class="company-name">SVA Financial Services</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="homepage.html" class="nav-item active">Home</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Loans <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="personal-loan.html">Personal Loans</a>
+                            <a href="home-loan.html">Home Loans</a>
+                            <a href="education-loan.html">Education Loans</a>
+                            <a href="mortgage-loan.html">Mortgage Loans</a>
+                            <a href="vehicle-loan.html">Vehicle Loans</a>
+                            <a href="business-loan.html">Business Loans</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Insurances <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="health-insurance.html">Health Insurance</a>
+                            <a href="life-insurance.html">Life Insurance</a>
+                            <a href="vehicle-insurance.html">Vehicle Insurance</a>
+                        </div>
+                    </div>
+                    <a href="loan-calculator.html" class="nav-item">Loan Calculator</a>
+                    <a href="about.html" class="nav-item">About Us</a>
+                    <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">When banks compete, <span class="highlight">you win.</span></h1>
+        </div>
+    </section>
+
+    <!-- Financial Products Navigation -->
+    <section class="product-nav">
+        <div class="container">
+            <h2 class="product-nav-title">Explore Our Financial Solutions</h2>
+            <div class="product-cards">
+                <div class="product-card active" data-section="loans-section">
+                    <div class="icon-container">
+                        <div class="icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <span>Loans</span>
+                </div>
+                <div class="product-card" data-section="insurance-section">
+                    <div class="icon-container">
+                        <div class="icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <span>Insurance</span>
+                </div>
+                <div class="product-card" data-section="business-loans-section">
+                    <div class="icon-container">
+                        <div class="icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                    </div>
+                    <span>Business Loans</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Content Sections -->
+    <div class="product-content">
+        <!-- Personal Loans Section -->
+        <section id="loans-section" class="product-section active">
+            <div class="container">
+                <div class="loan-content">
+                    <div class="loan-info">
+                        <h2 class="section-subtitle">Loans</h2>
+                        <h2 class="section-title">Find the right loan rate for you</h2>
+                        <p class="section-description">
+                            Need to consolidate debt or make a large purchase? We bring the 
+                            lenders to you so you can shop and compare personal loan offers in 
+                            minutes.
+                        </p>
+                        <a href="#" class="btn btn-primary" id="compare-rates-btn">Compare Rates</a>
+                    </div>
+                    <div class="loan-form">
+                        <div class="form-container">
+                            <h3 class="form-title">LOAN PURPOSE</h3>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="debt" name="loan-purpose">
+                                    <label for="debt">Debt Consolidation</label>
+                                </div>
+                                <div class="radio-option selected">
+                                    <input type="radio" id="home" name="loan-purpose" checked>
+                                    <label for="home">Home Improvements</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="credit" name="loan-purpose">
+                                    <label for="credit">Pay Off Credit Cards Faster</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="buying" name="loan-purpose">
+                                    <label for="buying">Home Buying</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loan-image">
+                            <img src="images/loan-person.jpg" alt="Person with tablet">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Comparison Modal -->
+        <div id="loan-comparison-modal" class="loan-modal">
+            <div class="loan-modal-content">
+                <div class="loan-modal-header">
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="loan-modal-body">
+                    <div class="loan-modal-title">
+                        <h3>PERSONAL LOAN</h3>
+                        <h2>Select a loan purpose</h2>
+                    </div>
+                    <div class="loan-form-group">
+                        <label for="loan-purpose-select">Select a Loan Purpose</label>
+                        <div class="select-wrapper">
+                            <select id="loan-purpose-select">
+                                <option value="" disabled selected>Choose a loan type</option>
+                                <option value="personal">Personal Loan</option>
+                                <option value="home">Home Loan</option>
+                                <option value="education">Education Loan</option>
+                                <option value="mortgage">Mortgage Loan</option>
+                                <option value="vehicle">Vehicle Loan</option>
+                                <option value="business">Business Loan</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No impact to your credit score</span>
+                        </div>
+                    </div>
+                    <div class="loan-modal-actions">
+                        <button id="continue-btn" class="btn btn-primary btn-block">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance Section -->
+        <section id="insurance-section" class="product-section">
+            <div class="container">
+                <div class="loan-content">
+                    <div class="loan-info">
+                        <h2 class="section-subtitle">Insurance</h2>
+                        <h2 class="section-title">Find the best insurance rates for you</h2>
+                        <p class="section-description">
+                            Compare top insurance companies and get affordable, customized
+                            coverage for your car, home and more.
+                        </p>
+                        <a href="#" class="btn btn-primary">Get Quotes</a>
+                    </div>
+                    <div class="insurance-options">
+                        <div class="insurance-image">
+                            <img src="images/insurance-person.jpg" alt="Person with insurance">
+                        </div>
+                        <div class="insurance-types">
+                            <div class="insurance-type">
+                                <div class="insurance-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <span>Auto Insurance</span>
+                                <div class="selection-indicator"></div>
+                            </div>
+                            <div class="insurance-type selected">
+                                <div class="insurance-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <span>Home Insurance</span>
+                                <div class="selection-indicator active"></div>
+                            </div>
+                            <div class="insurance-type">
+                                <div class="insurance-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <span>Life Insurance</span>
+                                <div class="selection-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Loans Section -->
+        <section id="business-loans-section" class="product-section">
+            <div class="container">
+                <div class="loan-content">
+                    <div class="loan-info">
+                        <h2 class="section-subtitle">Business Loans</h2>
+                        <h2 class="section-title">Find the right financing for your business</h2>
+                        <p class="section-description">
+                            From startup funding to expansion capital, we help you find the best business 
+                            loan options to fuel your growth and success.
+                        </p>
+                        <a href="business-loan.html" class="btn btn-primary">Compare Business Loans</a>
+                    </div>
+                    <div class="loan-form">
+                        <div class="form-container">
+                            <h3 class="form-title">BUSINESS TYPE</h3>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="startup" name="business-type">
+                                    <label for="startup">Startup (0-2 years)</label>
+                                </div>
+                                <div class="radio-option selected">
+                                    <input type="radio" id="established" name="business-type" checked>
+                                    <label for="established">Established Business (2+ years)</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="franchise" name="business-type">
+                                    <label for="franchise">Franchise</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loan-image">
+                            <img src="images/business-loan.jpg" alt="Business owner">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional product sections would go here -->
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-description">
+                We provide personalized service with competitive rates from trusted lenders. 
+                Our experts help you navigate financial decisions with confidence.
+            </p>
+            <a href="#" class="btn btn-primary">Book Free Consulting</a>
+        </div>
+    </section>
+
+    <!-- Our Partners Section -->
+    <section class="our-partners">
+        <div class="container">
+            <h2 class="section-title">Trusted by Many Banks</h2>
+            <div class="partner-logos">
+                <img src="images/bank1.png" alt="Bank Logo">
+                <img src="images/bank2.png" alt="Bank Logo">
+                <img src="images/bank3.png" alt="Bank Logo">
+                <img src="images/bank4.png" alt="Bank Logo">
+                <img src="images/bank5.png" alt="Bank Logo">
+                <img src="images/bank6.png" alt="Bank Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="client-header">
+                        <img src="images/client1.jpg" alt="Md Zainul">
+                        <div class="client-info">
+                            <h4>Md Zainul</h4>
+                            <p>Feb 6, 2023</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Just a few day's ago I had applied for a personal loan to this company and I would appreciate the outstanding customer service provided throughout the loan process. The team was responsive and the loan approval process was smooth and efficient. Thank you...
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-header">
+                        <img src="images/client2.jpg" alt="Zaqu Siddiq">
+                        <div class="client-info">
+                            <h4>Zaqu Siddiq</h4>
+                            <p>Jan 11, 2022</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        Prarvi consultancy is a very good and friendly company, they help a lot in getting the loan approved. The staff is very good and helpful. Most importantly, Prarvi modern is a very good and helpful person. In conclusion, the staff there gives a true and good service.
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-header">
+                        <img src="images/client3.jpg" alt="Amita Rathod">
+                        <div class="client-info">
+                            <h4>Amita Rathod</h4>
+                            <p>Jan 11, 2022</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        I am very happy with consulting with them. I extremely satisfied with the service provided by the team. They are so helpful, accurate,fast and completely transparent.Thanks a lot to Prarvi team.Special thanks to their honesty.
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-header">
+                        <img src="images/client4.jpg" alt="ALPESH GOHIL">
+                        <div class="client-info">
+                            <h4>ALPESH GOHIL</h4>
+                            <p>Sep 18, 2023</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        As a customer of Prarvi Consultancy, I am extremely satisfied with the process handled by their team. The entire procedure was fast, accurate, and transparent. Their honesty and ensuring that everything went smoothly and efficiently. I highly recommend them.
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="client-header">
+                        <img src="images/client5.jpg" alt="Dhruvik Patel">
+                        <div class="client-info">
+                            <h4>Dhruvik Patel</h4>
+                            <p>Sep 10, 2023</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        I still can't believe the incredible experience I had with Prarvi. I was in my final-year studies at a university in London, I faced an almost impossible situation. Other students from many places told me that it is the final year, so I should applied for a loan in the first year. After applying during my final year, they approved my loan.
+                    </p>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="SVA Logo">
+                    <p>When banks compete, you win.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Products</h3>
+                        <ul>
+                            <li><a href="personal-loan.html">Personal Loans</a></li>
+                            <li><a href="home-loan.html">Home Loans</a></li>
+                            <li><a href="business-loan.html">Business Loans</a></li>
+                            <li><a href="education-loan.html">Education Loans</a></li>
+                            <li><a href="vehicle-loan.html">Vehicle Loans</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 SVA Financial Services. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .address-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 99.5%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .address-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .address-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.2);
+        }
+        .error-message {
+            color: #e53935;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-message.visible {
+            display: block;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="address-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="address-content">
+            <div class="container">
+                <div class="address-header">
+                    <h3 class="loan-type-label">PERSONAL LOAN</h3>
+                    <h2 class="address-title">What's your address?</h2>
+                </div>
+                
+                <div class="address-form">
+                    <div class="form-group">
+                        <label for="street-address" class="form-label">Street Address</label>
+                        <input type="text" id="street-address" class="form-control" placeholder="">
+                        <div id="street-error" class="error-message">Please enter your street address.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" id="city" class="form-control" placeholder="City">
+                        <div id="city-error" class="error-message">Please enter your home city.</div>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No Impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const streetAddressInput = document.getElementById('street-address');
+            const cityInput = document.getElementById('city');
+            const streetError = document.getElementById('street-error');
+            const cityError = document.getElementById('city-error');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Pre-fill city from PIN code data if available
+            const pinCode = localStorage.getItem('personalLoanPincode');
+            const areaName = localStorage.getItem('personalLoanArea');
+            
+            if (areaName) {
+                // Extract city from area name (assuming format "Area, City")
+                const parts = areaName.split(',');
+                if (parts.length > 1) {
+                    cityInput.value = parts[1].trim();
+                }
+            }
+            
+            // Validate inputs on blur
+            streetAddressInput.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    streetError.classList.add('visible');
+                } else {
+                    streetError.classList.remove('visible');
+                }
+            });
+            
+            cityInput.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    cityError.classList.add('visible');
+                } else {
+                    cityError.classList.remove('visible');
+                }
+            });
+            
+            // Continue button click handler
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    let isValid = true;
+                    
+                    // Validate street address
+                    if (!streetAddressInput.value.trim()) {
+                        streetError.classList.add('visible');
+                        isValid = false;
+                    } else {
+                        streetError.classList.remove('visible');
+                    }
+                    
+                    // Validate city
+                    if (!cityInput.value.trim()) {
+                        cityError.classList.add('visible');
+                        isValid = false;
+                    } else {
+                        cityError.classList.remove('visible');
+                    }
+                    
+                    if (isValid) {
+                        // Store the address details in localStorage with consistent key naming
+                        localStorage.setItem('personalLoanStreetAddress', streetAddressInput.value.trim());
+                        localStorage.setItem('personalLoanCity', cityInput.value.trim());
+                        
+                        // Redirect to the name page
+                        window.location.href = 'personal-loan-name.html';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

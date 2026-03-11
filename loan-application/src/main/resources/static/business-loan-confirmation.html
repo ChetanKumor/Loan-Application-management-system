@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Application - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .back-button i {
+            margin-right: 5px;
+        }
+        .confirmation-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 95%;
+            background-color: #0066cc;
+        }
+        .loan-type-label {
+            color: #0066cc;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #1a2b3c;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .confirmation-text {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+        .application-summary {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .summary-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .summary-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .summary-value {
+            font-size: 16px;
+            color: #1a2b3c;
+            font-weight: 500;
+        }
+        .not-specified {
+            color: #ff9900;
+            font-weight: 600;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-left">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="confirmation-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <h1>Review Your Application</h1>
+        <p>Please review your information before submitting your application.</p>
+        
+        <div class="summary-section">
+            <h2>Business Information</h2>
+            <div class="summary-item">
+                <div class="summary-label">Business Name</div>
+                <div class="summary-value" id="business-name">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Business Type</div>
+                <div class="summary-value" id="business-type">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Industry</div>
+                <div class="summary-value" id="business-industry">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Business Start Date</div>
+                <div class="summary-value" id="business-start-date">Loading...</div>
+            </div>
+        </div>
+        
+        <div class="summary-section">
+            <h2>Loan Details</h2>
+            <div class="summary-item">
+                <div class="summary-label">Loan Amount</div>
+                <div class="summary-value" id="loan-amount">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Loan Purpose</div>
+                <div class="summary-value" id="loan-purpose">Loading...</div>
+            </div>
+        </div>
+        
+        <div class="summary-section">
+            <h2>Personal Information</h2>
+            <div class="summary-item">
+                <div class="summary-label">Full Name</div>
+                <div class="summary-value" id="full-name">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Phone Number</div>
+                <div class="summary-value" id="phone">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Email Address</div>
+                <div class="summary-value" id="email">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">PIN Code</div>
+                <div class="summary-value" id="pincode">Loading...</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">Credit Score Range</div>
+                <div class="summary-value" id="credit-score">Loading...</div>
+            </div>
+        </div>
+        
+        <a href="business-loan-thankyou" class="btn-primary" id="submit-application">Submit Application</a>
+    </div>
+
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    
+        // Function to retrieve all business loan data from localStorage
+        function getAllBusinessLoanData() {
+            // Create an object with all the business loan data
+            const loanData = {
+                businessName: localStorage.getItem('businessName') || '',
+                businessType: document.getElementById('business-type').textContent,
+                businessIndustry: localStorage.getItem('businessIndustry') || '',
+                businessLoanStartDate: localStorage.getItem('businessLoanStartDate') || '',
+                businessLoanAmount: localStorage.getItem('businessLoanAmount') || '',
+                loanPurpose: document.getElementById('loan-purpose').textContent,
+                personalName: localStorage.getItem('personalName') || '',
+                businessPhone: localStorage.getItem('businessPhone') || '',
+                businessEmail: localStorage.getItem('businessEmail') || '',
+                businessPincode: localStorage.getItem('businessPincode') || '',
+                businessLoanCredit: localStorage.getItem('businessLoanCredit') || ''
+            };
+            
+            return loanData;
+        }
+    
+        // Function to submit the application data to the backend
+        function submitApplication() {
+            const loanData = getAllBusinessLoanData();
+            
+            // Capture the exact submission time on the client side
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = String(now.getFullYear()).slice(-2);
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const clientSubmissionTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+            
+            // Store the client-side submission time
+            localStorage.setItem('clientSubmissionDateTime', clientSubmissionTime);
+            
+            // Show loading state
+            const submitButton = document.getElementById('submit-application');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Submitting...';
+            submitButton.style.backgroundColor = '#999';
+            
+            // Make API call to submit the data
+            fetch('/api/business-loan/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loanData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // Redirect to thank you page
+                window.location.href = 'business-loan-thankyou.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your application. Please try again.');
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.style.backgroundColor = '#0066cc';
+            });
+            
+            // Prevent default navigation
+            return false;
+        }
+    
+        // Add event listener to the submit button
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitButton = document.getElementById('submit-application');
+            submitButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                submitApplication();
+            });
+        });
+    
+        // Load data from localStorage when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Business Information
+            document.getElementById('business-name').textContent = localStorage.getItem('businessName') || 'Not provided';
+            
+            // For business type, get the actual text value instead of the option value
+            const businessType = localStorage.getItem('businessType');
+            let businessTypeText = 'Not provided';
+            
+            if (businessType === 'startup') {
+                businessTypeText = 'Sole Proprietor';
+            } else if (businessType === 'expansion') {
+                businessTypeText = 'Partnership';
+            } else if (businessType === 'equipment') {
+                businessTypeText = 'Private Limited Company(PLC)';
+            } else if (businessType === 'other') {
+                businessTypeText = 'Other';
+            } else if (businessType) {
+                businessTypeText = businessType;
+            }
+            
+            document.getElementById('business-type').textContent = businessTypeText;
+            
+            document.getElementById('business-industry').textContent = localStorage.getItem('businessIndustry') || 'Not provided';
+            document.getElementById('business-start-date').textContent = localStorage.getItem('businessLoanStartDate') || 'Not provided';
+            
+            // Loan Details
+            document.getElementById('loan-amount').textContent = localStorage.getItem('businessLoanAmount') || 'Not provided';
+            
+            // For loan purpose, get the actual text value instead of the option value
+            const loanPurpose = localStorage.getItem('loanPurpose');
+            let loanPurposeText = 'Not provided';
+            
+            if (loanPurpose === 'startup') {
+                loanPurposeText = 'Business Expansion';
+            } else if (loanPurpose === 'expansion') {
+                loanPurposeText = 'Equipment Purchase';
+            } else if (loanPurpose === 'equipment') {
+                loanPurposeText = 'Working Capital';
+            } else if (loanPurpose === 'other') {
+                loanPurposeText = 'Other';
+            } else if (loanPurpose) {
+                loanPurposeText = loanPurpose;
+            }
+            
+            document.getElementById('loan-purpose').textContent = loanPurposeText;
+            
+            // Personal Information
+            document.getElementById('full-name').textContent = localStorage.getItem('personalName') || 'Not provided';
+            document.getElementById('phone').textContent = localStorage.getItem('businessPhone') || 'Not provided';
+            document.getElementById('email').textContent = localStorage.getItem('businessEmail') || 'Not provided';
+            document.getElementById('pincode').textContent = localStorage.getItem('businessPincode') || 'Not provided';
+            document.getElementById('credit-score').textContent = localStorage.getItem('businessLoanCredit') || 'Not provided';
+            
+            // Set progress bar to 100%
+            document.querySelector('.progress-bar').style.width = '100%';
+        });
+    
+        // Function to format date in dd/mm/yy format
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = String(date.getFullYear()).slice(-2);
+            
+            return `${day}/${month}/${year}`;
+        }
+    
+        // When loading data from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Business Information
+            document.getElementById('business-name').textContent = localStorage.getItem('businessName') || 'Not provided';
+            
+            // For business type, get the actual text value instead of the option value
+            const businessType = localStorage.getItem('businessType');
+            let businessTypeText = 'Not provided';
+            
+            if (businessType === 'startup') {
+                businessTypeText = 'Sole Proprietor';
+            } else if (businessType === 'expansion') {
+                businessTypeText = 'Partnership';
+            } else if (businessType === 'equipment') {
+                businessTypeText = 'Private Limited Company(PLC)';
+            } else if (businessType === 'other') {
+                businessTypeText = 'Other';
+            } else if (businessType) {
+                businessTypeText = businessType;
+            }
+            
+            document.getElementById('business-type').textContent = businessTypeText;
+            
+            document.getElementById('business-industry').textContent = localStorage.getItem('businessIndustry') || 'Not provided';
+            document.getElementById('business-start-date').textContent = localStorage.getItem('businessLoanStartDate') || 'Not provided';
+            
+            // Loan Details
+            document.getElementById('loan-amount').textContent = localStorage.getItem('businessLoanAmount') || 'Not provided';
+            
+            // For loan purpose, get the actual text value instead of the option value
+            const loanPurpose = localStorage.getItem('loanPurpose');
+            let loanPurposeText = 'Not provided';
+            
+            if (loanPurpose === 'startup') {
+                loanPurposeText = 'Business Expansion';
+            } else if (loanPurpose === 'expansion') {
+                loanPurposeText = 'Equipment Purchase';
+            } else if (loanPurpose === 'equipment') {
+                loanPurposeText = 'Working Capital';
+            } else if (loanPurpose === 'other') {
+                loanPurposeText = 'Other';
+            } else if (loanPurpose) {
+                loanPurposeText = loanPurpose;
+            }
+            
+            document.getElementById('loan-purpose').textContent = loanPurposeText;
+            
+            // Personal Information
+            document.getElementById('full-name').textContent = localStorage.getItem('personalName') || 'Not provided';
+            document.getElementById('phone').textContent = localStorage.getItem('businessPhone') || 'Not provided';
+            document.getElementById('email').textContent = localStorage.getItem('businessEmail') || 'Not provided';
+            document.getElementById('pincode').textContent = localStorage.getItem('businessPincode') || 'Not provided';
+            document.getElementById('credit-score').textContent = localStorage.getItem('businessLoanCredit') || 'Not provided';
+            
+            // Set progress bar to 100%
+            document.querySelector('.progress-bar').style.width = '100%';
+        });
+    </script>
+</body>
+</html>

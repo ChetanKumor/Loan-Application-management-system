@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <!-- Navigation Bar (Same as homepage) -->
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="homepage.html">
+                        <img src="images/logo.png" alt="SVA Logo">
+                        <span class="company-name">SVA Financial Services</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="homepage.html" class="nav-item">Home</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Loans <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="personal-loan.html">Personal Loans</a>
+                            <a href="home-loan.html">Home Loans</a>
+                            <a href="education-loan.html">Education Loans</a>
+                            <a href="mortgage-loan.html">Mortgage Loans</a>
+                            <a href="vehicle-loan.html">Vehicle Loans</a>
+                            <a href="business-loan.html">Business Loans</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Insurances <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="health-insurance.html">Health Insurance</a>
+                            <a href="life-insurance.html">Life Insurance</a>
+                            <a href="vehicle-insurance.html">Vehicle Insurance</a>
+                        </div>
+                    </div>
+                    <a href="loan-calculator.html" class="nav-item">Loan Calculator</a>
+                    <a href="about.html" class="nav-item">About Us</a>
+                    <a href="contact.html" class="nav-item active">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We're here to help with any questions you may have</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Our customer support team is available Monday-Friday, 9am-6pm EST.</p>
+                    <a href="tel:1-800-123-4567" class="contact-link">1-800-123-4567</a>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us an email and we'll get back to you within 24 hours.</p>
+                    <a href="mailto:support@sva.com" class="contact-link">support@sva.com</a>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Our headquarters is located in downtown New York City.</p>
+                    <address class="contact-link">123 Financial Street<br>New York, NY 10001</address>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="loan">Loan Inquiry</option>
+                            <option value="insurance">Insurance Inquiry</option>
+                            <option value="credit">Credit Card Inquiry</option>
+                            <option value="support">Customer Support</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Subscribe to our newsletter for financial tips and updates</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="form-image">
+                <img src="images/contact-support.jpg" alt="Customer Support">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does SVA make money?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>SVA makes money through advertising and referral fees from our financial partners when a user applies for a product through our platform. This allows us to provide our comparison services to you for free. Rest assured, our recommendations are always based on what's best for you, not our partners.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is my information secure with SVA?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we take data security very seriously. We use industry-standard encryption and security measures to protect your personal information. We never sell your data to third parties without your explicit consent.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I know I'm getting the best rates?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with hundreds of lenders and financial institutions to ensure you have access to a wide range of options. Our comparison tools show you real-time rates based on your specific financial situation, allowing you to make an informed decision.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I apply for multiple products to compare offers?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can apply for multiple products through our platform. However, keep in mind that some financial products may require a hard credit check, which can temporarily impact your credit score. Our platform will clearly indicate when a hard credit check is required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly will I receive offers after applying?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For many products, you'll receive offers instantly or within minutes. For more complex financial products like mortgages or business loans, it may take 1-2 business days to receive all available offers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573036704!2d-73.98823492346177!3d40.75067083542241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b30eac9f%3A0xaca05ca48ab0c3b8!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1685544321112!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="SVA Logo">
+                    <p>When banks compete, you win.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Products</h3>
+                        <ul>
+                            <li><a href="personal-loan.html">Personal Loans</a></li>
+                            <li><a href="home-loan.html">Home Loans</a></li>
+                            <li><a href="business-loan.html">Business Loans</a></li>
+                            <li><a href="education-loan.html">Education Loans</a></li>
+                            <li><a href="vehicle-loan.html">Vehicle Loans</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 SVA Financial Services. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

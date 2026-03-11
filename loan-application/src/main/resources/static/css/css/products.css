@@ -1,0 +1,256 @@
+/* Product Navigation Styles */
+.product-nav {
+    padding: 50px 0 30px;
+    background-color: #f9f9f9;
+}
+
+.product-nav-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.product-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    padding: 25px 15px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00c853, #64dd17);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover:before {
+    transform: scaleX(1);
+}
+
+.product-card.active {
+    background-color: #f0f9f4;
+    box-shadow: 0 8px 20px rgba(0, 200, 83, 0.15);
+}
+
+.product-card.active:before {
+    transform: scaleX(1);
+}
+
+.icon-container {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.product-card .icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f9f4;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    color: #00c853;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .icon {
+    background-color: #00c853;
+    color: white;
+    transform: scale(1.1);
+}
+
+.product-card.active .icon {
+    background-color: #00c853;
+    color: white;
+}
+
+.product-card span {
+    font-weight: 500;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.product-card:hover span {
+    color: #00c853;
+}
+
+.product-card.active span {
+    color: #00c853;
+    font-weight: 600;
+}
+
+/* Product Content Sections */
+.product-section {
+    display: none;
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.product-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Insurance Section Styles */
+.insurance-options {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.insurance-image {
+    flex: 1;
+}
+
+.insurance-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.insurance-image img:hover {
+    transform: scale(1.02);
+}
+
+.insurance-types {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insurance-type {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.insurance-type:hover {
+    background-color: rgba(0, 200, 83, 0.1);
+    transform: translateX(5px);
+}
+
+.insurance-type.selected {
+    background-color: rgba(0, 200, 83, 0.1);
+    border-left: 4px solid #00c853;
+}
+
+.insurance-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #00c853;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.insurance-type:hover .insurance-icon {
+    transform: scale(1.1);
+}
+
+.selection-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    margin-left: auto;
+    transition: all 0.3s ease;
+}
+
+.selection-indicator.active {
+    background-color: #00c853;
+    border-color: #00c853;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .insurance-options {
+        flex-direction: column;
+    }
+    
+    .insurance-image {
+        order: -1;
+    }
+    
+    .product-cards {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 150px;
+        padding: 20px 10px;
+    }
+    
+    .product-card .icon {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-cards {
+        gap: 15px;
+    }
+    
+    .product-card {
+        width: 130px;
+        padding: 15px 10px;
+    }
+    
+    .product-card .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,16 @@
+/* Hero Section */
+.hero {
+    background-color: var(--white-color);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: var(--primary-color);
+}

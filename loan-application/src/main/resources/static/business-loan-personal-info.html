@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information - SVA</title>
+    <link rel="stylesheet" href="css/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            background-color: #1a2b3c;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header-right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .header-right a, .header-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-button {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .personal-info-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .progress-bar-container {
+            height: 4px;
+            background-color: #e0e0e0;
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 98%;
+            background-color: #00c853;
+        }
+        .loan-type-label {
+            color: #00a651;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .personal-info-title {
+            color: #1a2b3c;
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        .personal-info-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-error {
+            color: #e53935;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 2px rgba(0,102,204,0.1);
+        }
+        .phone-input {
+            position: relative;
+        }
+        .phone-input i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+        .phone-input input {
+            padding-left: 40px;
+        }
+        .security-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        .security-item i {
+            color: #0066cc;
+        }
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary:hover {
+            background-color: #0055b3;
+        }
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .consent-text {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .consent-list {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        .consent-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .footer-links {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer-links a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="back-button" onclick="history.back()"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <img src="images/logo.png" alt="SVA Logo">
+        <div class="header-right">
+            <a href="#">Disclosures</a>
+        </div>
+    </div>
+    
+    <div class="personal-info-page">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="personal-info-content">
+            <div class="container">
+                <div class="personal-info-header">
+                    <h3 class="loan-type-label">BUSINESS LOAN</h3>
+                    <h2 class="personal-info-title">Tell us about yourself.</h2>
+                </div>
+                
+                <div class="personal-info-form">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" class="form-input" placeholder="">
+                        <span class="form-error" id="first-name-error">Please enter your first name.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" class="form-input" placeholder="">
+                        <span class="form-error" id="last-name-error">Please enter your last name.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <div class="phone-input">
+                            <i class="fas fa-mobile-alt"></i>
+                            <input type="tel" id="phone-number" class="form-input" placeholder="">
+                        </div>
+                        <span class="form-error" id="phone-error">Please enter a valid phone number.</span>
+                    </div>
+                    
+                    <div class="security-info">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Your information is securely encrypted</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>No impact to your credit score</span>
+                        </div>
+                    </div>
+                    
+                    <button id="continue-btn" class="btn btn-primary">Continue</button>
+                    
+                    <div class="consent-text">
+                        By clicking "Continue" above, I understand and agree to the following:
+                        <ul class="consent-list">
+                            <li>I provide my express written consent to receive calls and text messages, including for marketing purposes, from LendingTree, LendingTree's Network Partners, and any authorized third party calling or texting on behalf of LendingTree or its Network Partners, including calls and texts made through automated means such as autodialers, selection systems, and pre-recorded or artificial voice recordings, even if my number is listed on any company-specific, state, or federal Do-Not-Call list. *Message and data rates may apply. Consent is not required as a condition to use LendingTree's services. You may call 1-888-272-1355 to speak with a customer care representative or use LendingTree's LoanExplorer.</li>
+                            <li>I authorize LendingTree to share my information with its Network Partners, and they may further share my information with their partners. LendingTree and its Network Partners may exchange information about me, including my loan terms and account.</li>
+                            <li>I agree to LendingTree's Terms of Use, Privacy Policy and to receive communications electronically.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Licenses & Disclosures</a> | <a href="#">Accessibility Statement</a>
+        </div>
+        
+        <div class="footer-text">
+            LendingTree, LLC is a Marketing Lead Generator and is a Duly Licensed Mortgage Broker, as required by law, with its main office located at 1415 Vantage Park Drive, Suite 700, Charlotte, NC 28203, NMLS Unique Identifier #1136. LendingTree, LLC is known as LT Technologies in lieu of true name LendingTree, LLC in NY. LendingTree technology and processes are patented under U.S. Patent Nos. 6,385,594 and 6,611,816 and licensed under U.S. Patent Nos. 5,995,947 and 5,758,328. © 2023 LendingTree, LLC. All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstNameInput = document.getElementById('first-name');
+            const lastNameInput = document.getElementById('last-name');
+            const phoneInput = document.getElementById('phone-number');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Function to check if all required fields are filled
+            function validateInputs() {
+                if (firstNameInput.value.trim() && 
+                    lastNameInput.value.trim() && 
+                    phoneInput.value.trim()) {
+                    continueBtn.disabled = false;
+                } else {
+                    continueBtn.disabled = true;
+                }
+            }
+            
+            // Add input event listeners to all fields
+            firstNameInput.addEventListener('input', validateInputs);
+            lastNameInput.addEventListener('input', validateInputs);
+            phoneInput.addEventListener('input', validateInputs);
+            
+            // Disable continue button initially
+            continueBtn.disabled = true;
+            
+            // Handle continue button click
+            continueBtn.addEventListener('click', function() {
+                // Get values from input fields
+                const firstName = firstNameInput.value.trim();
+                const lastName = lastNameInput.value.trim();
+                const phoneNumber = phoneInput.value.trim();
+                
+                // Store values in localStorage
+                localStorage.setItem('personalFirstName', firstName);
+                localStorage.setItem('personalLastName', lastName);
+                localStorage.setItem('businessPhone', phoneNumber);
+                
+                // Store full name for confirmation page
+                localStorage.setItem('personalName', firstName + ' ' + lastName);
+                
+                console.log('Saved personal information:', {
+                    firstName,
+                    lastName,
+                    phoneNumber
+                });
+                
+                // Navigate to the next page (adjust as needed)
+                window.location.href = 'business-loan-email.html';
+            });
+        });
+    </script>
+</body>
+</html>
